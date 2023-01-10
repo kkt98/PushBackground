@@ -8,7 +8,6 @@ import android.content.Intent
 import android.media.RingtoneManager
 import android.os.Build
 import android.util.Log
-import android.widget.Toast
 import androidx.core.app.NotificationCompat
 import com.google.firebase.messaging.FirebaseMessaging
 import com.google.firebase.messaging.FirebaseMessagingService
@@ -26,7 +25,7 @@ class FcmService : FirebaseMessagingService() {
         val pref = this.getSharedPreferences("token", Context.MODE_PRIVATE)
         val editor = pref.edit()
         editor.putString("token", token).apply()
-        editor.commit()
+        editor.apply()
         Log.i(TAG, "성공적으로 토큰을 저장함")
     }
 
@@ -35,8 +34,8 @@ class FcmService : FirebaseMessagingService() {
         Log.d(TAG, "From: " + remoteMessage.from)
 
         // Notification 메시지를 수신할 경우
-        // remoteMessage.notification?.body!! 여기에 내용이 저장되있음
-         Log.d(TAG, "Notification Message Body: " + remoteMessage.notification?.body!!)
+        // remoteMessage.notification?.body 여기에 내용이 저장되있음
+//        Log.d(TAG, "Notification Message Body: " + remoteMessage.notification?.body!!)
 
         //받은 remoteMessage의 값 출력해보기. 데이터메세지 / 알림메세지
         Log.d(TAG, "Message data : ${remoteMessage.data}")
@@ -62,7 +61,7 @@ class FcmService : FirebaseMessagingService() {
             intent.putExtra(key, remoteMessage.data.getValue(key))
         }
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP) // Activity Stack 을 경로만 남김(A-B-C-D-B => A-B)
-        val pendingIntent = PendingIntent.getActivity(this, uniId, intent, PendingIntent.FLAG_ONE_SHOT)
+        val pendingIntent = PendingIntent.getActivity(this, uniId, intent, PendingIntent.FLAG_IMMUTABLE)
 
         // 알림 채널 이름
         val channelId = "my_channel"
@@ -90,10 +89,10 @@ class FcmService : FirebaseMessagingService() {
         notificationManager.notify(uniId, notificationBuilder.build())
     }
 
-    /** Token 가져오기 */
     fun getFirebaseToken() {
-        //비동기 방식
+
         FirebaseMessaging.getInstance().token.addOnSuccessListener {
+
             Log.d(TAG, "token=${it}")
         }
 
