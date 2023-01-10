@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "862192419625",
+    "project_id": "pushbackgrou",
+    "storage_bucket": "pushbackgrou.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:862192419625:android:91ac1ed94dd168fada2d38",
+        "android_client_info": {
+          "package_name": "com.example.pushbackground"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "862192419625-o9705m6u34e1rapcabtfljoslted5r3p.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.pushbackground",
+            "certificate_hash": "25d699107d9cabfa669ade08045e1df30541c05f"
+          }
+        },
+        {
+          "client_id": "862192419625-j62rfksq5cedpalcljve6e3al8jv50l9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCwHHZjKuVV2UrWPyMHwcoGRDV3iilgDJg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "862192419625-j62rfksq5cedpalcljve6e3al8jv50l9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
